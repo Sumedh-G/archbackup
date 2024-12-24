@@ -26,6 +26,7 @@ local catppuccin_options = {
   integrations = {
     markdown = true,
     treesitter = true,
+    semantic_tokens = true,
     telescope = {
       enabled = true,
     },
@@ -35,7 +36,11 @@ local catppuccin_options = {
       enabled = true,
       colored_indent_levels = true,
       scope_color = "lavender",
-    }
+    },
+    nvim_surround = true,
+    gitsigns = true,
+    overseer = true,
+    fidget = true,
   },
 }
 

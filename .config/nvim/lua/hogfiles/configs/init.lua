@@ -37,7 +37,7 @@ return {
     {
       "utilyre/sentiment.nvim",
       version = "*",
-      event = "VeryLazy", -- keep for lazy loading
+      event = "VeryLazy",
       opts = require("hogfiles.configs.sentiment"),
       init = function()
         vim.g.loaded_matchparen = 1
@@ -57,6 +57,11 @@ return {
     {
       "HiPhish/rainbow-delimiters.nvim",
       event = "VeryLazy",
+      config = function()
+        require('rainbow-delimiters.setup').setup(
+          require("hogfiles.configs.rainbow_delimiters")
+        )
+      end,
     },
     {
       "lukas-reineke/indent-blankline.nvim",
@@ -84,6 +89,22 @@ return {
       },
       opts = require("hogfiles.configs.telescope"),
       lazy = false,
+    },
+    -- Magic
+    {
+      "lewis6991/gitsigns.nvim",
+      event = "VeryLazy",
+      opts = require("hogfiles.configs.gitsigns")
+    },
+    {
+      "stevearc/overseer.nvim",
+      lazy = false,
+      opts = require("hogfiles.configs.overseer")
+    },
+    {
+      "j-hui/fidget.nvim",
+      event = "VeryLazy",
+      opts = require("hogfiles.configs.fidget")
     },
   },
   install = { colorscheme = { "catppuccin" } },
