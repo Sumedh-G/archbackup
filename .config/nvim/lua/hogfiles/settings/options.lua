@@ -12,6 +12,8 @@ local neovim_options = {
 
   -- Ruler
   ruler = false, -- show cursor line and column in the status line
+  list = true,  -- enable eol characters
+  listchars = "trail:~",  -- identify trailing spaces and mark them with ~
 
   -- Text Wrap
   wrap = true, -- long lines wrap and continue on the next line
@@ -63,7 +65,7 @@ local neovim_options = {
   icon = true, -- let Vim set the text of the window icon
   iconstring = "Neovim", -- string to use for the Vim icon text
   title = true, -- let Vim set the title of the window
-  titlestring = "Neovim"  
+  titlestring = "Neovim"
 }
 
 for k,v in pairs(neovim_options) do
@@ -72,9 +74,9 @@ end
 
 local neovim_globals = {
   mapleader = " ",  -- lead key for custom keymaps
-  maplocalleader = " ",  -- lead key for custom sub-keymaps
+  maplocalleader = "\\",  -- lead key for custom sub-keymaps
 }
 
 for k,v in pairs(neovim_globals) do
-  vim.g[k] = value
+  vim.g[k] = v
 end

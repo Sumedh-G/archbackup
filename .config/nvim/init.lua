@@ -19,6 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Import options.lua from settings
 require("hogfiles.settings.options")
+require("hogfiles.settings.keymaps")
 
 -- Set up lazy.nvim
 local lazy_options = require("hogfiles.configs")

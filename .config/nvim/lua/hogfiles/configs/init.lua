@@ -6,7 +6,7 @@ return {
   },
   spec = {
     -- Catppuccin Theme
-    { 
+    {
       "catppuccin/nvim", 
       name = "catppuccin",
       lazy = false,
@@ -17,6 +17,12 @@ return {
         )
         vim.cmd([[colorscheme catppuccin]])
       end,
+    },
+    {
+      'nvim-lualine/lualine.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      lazy = false,
+      opts = require("hogfiles.configs.lualine"),
     },
     -- Syntax highlighting
     {
@@ -29,15 +35,20 @@ return {
       end,
     },
     {
+      "nvim-treesitter/nvim-treesitter-context",
+      event = "BufReadPre",
+      opts = require("hogfiles.configs.treesitter-context"),
+    },
+    {
       "folke/twilight.nvim",
-      event = "VeryLazy",
+      keys = require("hogfiles.keymaps.twilight"),
       opts = require("hogfiles.configs.twilight"),
     },
     -- Auto-pairing
     {
       "utilyre/sentiment.nvim",
       version = "*",
-      event = "VeryLazy",
+      event = "BufReadPost",
       opts = require("hogfiles.configs.sentiment"),
       init = function()
         vim.g.loaded_matchparen = 1
@@ -46,7 +57,7 @@ return {
     {
       "kylechui/nvim-surround",
       version = "*",
-      event = "VeryLazy",
+      event = "BufReadPost",
       opts = require("hogfiles.configs.surround"),
     },
     {
@@ -56,7 +67,7 @@ return {
     },
     {
       "HiPhish/rainbow-delimiters.nvim",
-      event = "VeryLazy",
+      event = "BufReadPost",
       config = function()
         require('rainbow-delimiters.setup').setup(
           require("hogfiles.configs.rainbow_delimiters")
@@ -69,7 +80,7 @@ return {
       ---@module "ibl"
       ---@type ibl.config
       opts = require("hogfiles.configs.indent_blankline"),
-      event = "VeryLazy"
+      event = "BufReadPost",
     },
     -- Movement
     {
@@ -77,6 +88,14 @@ return {
       event = "VeryLazy",
       opts = { speed = 1 },
     },
+    {
+      "rasulomaroff/reactive.nvim",
+      lazy = false,
+      opts = {
+        load = { 'catppuccin-mocha-cursor', 'catppuccin-mocha-cursorline' },
+      },
+    },
+    -- File Traversal
     {
       "nvim-telescope/telescope.nvim",
       tag = '0.1.8',
@@ -87,14 +106,20 @@ return {
           build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release',
         },
       },
+      keys = require("hogfiles.keymaps.telescope"),
       opts = require("hogfiles.configs.telescope"),
-      lazy = false,
     },
     -- Magic
     {
       "lewis6991/gitsigns.nvim",
-      event = "VeryLazy",
+      event = "BufReadPost",
       opts = require("hogfiles.configs.gitsigns")
+    },
+    {
+      "Zeioth/compiler.nvim",
+      cmd = {"CompilerOpen", "CompilerToggleResults", "CompilerRedo"},
+      dependencies = { "stevearc/overseer.nvim", "nvim-telescope/telescope.nvim" },
+      opts = require("hogfiles.configs.compiler-nvim"),
     },
     {
       "stevearc/overseer.nvim",
@@ -105,6 +130,17 @@ return {
       "j-hui/fidget.nvim",
       event = "VeryLazy",
       opts = require("hogfiles.configs.fidget")
+    },
+    {
+      'MeanderingProgrammer/render-markdown.nvim',
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter',
+        'echasnovski/mini.nvim'
+      },
+      ---@module 'render-markdown'
+      ---@type render.md.UserConfig
+      opts = require('hogfiles.configs.render_markdown'),
+      ft = { "markdown" }
     },
   },
   install = { colorscheme = { "catppuccin" } },

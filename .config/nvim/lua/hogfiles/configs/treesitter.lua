@@ -12,7 +12,9 @@ local treesitter_options = {
     "javascript", 
     "html", 
     "markdown",
+    "markdown_inline",
     "bash",
+    "latex",
   },
   highlight = {
     enable = true,
