@@ -1,0 +1,44 @@
+[package]
+name = "alpm"
+version = "4.0.1"
+description = "Rust bindings for libalpm"
+documentation = "https://docs.rs/alpm"
+
+authors.workspace = true
+readme.workspace = true
+edition.workspace = true
+homepage.workspace = true
+repository.workspace = true
+license.workspace = true
+keywords.workspace = true
+
+exclude = ["tests"]
+
+[package.metadata.docs.rs]
+no-default-features = true
+features = [ "docs-rs" ]
+
+[features]
+default = ["checkver"]
+mtree = ["libarchive", "libarchive3-sys"]
+git = ["alpm-sys/git"]
+static = ["alpm-sys/static"]
+generate = ["alpm-sys/generate"]
+checkver = []
+docs-rs = ["alpm-sys/docs-rs"]
+
+[dependencies]
+bitflags = "2.4.2"
+libarchive = { version = "0.1.1", optional = true }
+libarchive3-sys = { version = "0.1.2", optional = true }
+alpm-sys = { path = "../alpm-sys", version = "4.0.0" }
+
+[build-dependencies]
+alpm-sys = { path = "../alpm-sys", version = "4.0.0" }
+
+[dev-dependencies]
+criterion = "0.3.5"
+
+[[bench]]
+name = "list"
+harness = false

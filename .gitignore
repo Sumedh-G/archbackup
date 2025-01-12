@@ -1,4 +1,5 @@
 .mozilla
 .local
 .cache
+.npm
 .bash*
