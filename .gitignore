@@ -1,5 +1,6 @@
 .mozilla
 .local
 .cache
+.cargo
 .npm
 .bash*
