@@ -1,4 +1,15 @@
 {
-  "layer": "top",
-  "position": "top"
+  "layer": "overlay",
+  "position": "left",
+
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": [],
+  "modules-right": [],
+
+  "fixed-center": true,
+  "reload_style_on_change": true,
+
+  "hyprland/workspaces": {
+
+  }
 }
