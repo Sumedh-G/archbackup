@@ -1,6 +1,10 @@
 .mozilla
+.zen
+.config/gh
+.config/gh/*
 .local
 .cache
 .cargo
+.cargo/*
 .npm
 .bash*
