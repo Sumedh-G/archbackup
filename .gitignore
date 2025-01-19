@@ -1,5 +1,6 @@
 .mozilla
 .zen
+.zcompdump
 .config/gh
 .config/gh/*
 .local
