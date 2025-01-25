@@ -95,6 +95,13 @@ return {
         load = { 'catppuccin-mocha-cursor', 'catppuccin-mocha-cursorline' },
       },
     },
+    {
+      "ggandor/leap.nvim",
+      lazy = false,
+      config = function()
+        require("leap").create_default_mappings()
+      end,
+    },
     -- File Traversal
     {
       "nvim-telescope/telescope.nvim",
